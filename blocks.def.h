@@ -1,9 +1,13 @@
+
+# define SHSCRIPT(name) \
+	("$HOME/.dwmblocks/"name)
+
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-	{"Mem:", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
-
-	{"", "date '+%b %d (%a) %I:%M%p'",					5,		0},
+	{"", 	SHSCRIPT("memory.sh"),		5,		2},
+	{"", 	SHSCRIPT("keyboard.sh"),	1,		1},
+	{"", 	SHSCRIPT("time.sh"),		30,		3},
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
